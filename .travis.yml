@@ -10,8 +10,8 @@ branches:
   - stable
 
 script:
-  - javac SortInput.java
-  - java SortInput < input.txt
+  - javac Assignment_1.java
+  - java Assignment_1 < input.txt
 
 notifications:
   email: false
