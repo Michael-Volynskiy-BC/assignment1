@@ -18,8 +18,8 @@ public class Assignment_1 {
     public static void main(String[] args) throws IOException {    // thrown input/output exceptions will be caught
         Scanner sc = new Scanner(new File("input.txt"));    // scanner reads from a file named "input.txt"
 
-        while (sc.hasNextLine()) {    // while there are more lines to be read by the scanner, methods: isUniqueChar and sortWord are called on them, and formatted for outputting
-            String word = sc.nextLine();
+        while (sc.hasNextLine()) {    // while there are more lines to be read by the scanner, they will be converted to lowercase, methods: isUniqueChar and sortWord are called on them, and formatted for outputting
+            String word = sc.nextLine().toLowerCase();
             System.out.println(isUniqueChar(word) + "\t" + sortWord(word));
         }
     }    // end of main method
@@ -30,18 +30,19 @@ public class Assignment_1 {
 
         else {
             for (int i = 0; i < s.length() - 1; i++)
-                if (s.charAt(i) == s.charAt(i + 1))
-                    return false;
+                for (int j = i + 1; j < s.length(); j++)
+                    if (s.charAt(i) == s.charAt(j))
+                        return false;
         }
 
         return true;
     }
 
-    private static String sortWord(String s) {    // method creates an instance of the String as a lowercase character array, sorts, then appends the array to return it as a String
-        char[] c = s.toLowerCase().toCharArray();
+    private static String sortWord(String s) {    // method creates an instance of the String as a character array, sorts, then appends the array to return it as a String
+        char[] c = s.toCharArray();
         StringBuilder sortedWord = new StringBuilder();
 
-        Arrays.sort(c); // replaces the insertionSort method
+        Arrays.sort(c);    // replaces the insertionSort method
 
         for (int i = 0; i < c.length; i++)
             sortedWord.append(c[i]);
